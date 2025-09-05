@@ -1,17 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "arvore-binaria/arvore_binaria_busca.h"
+#include "operacoes/operacoes_arvore.h"
 
-void imprimir_pre_ordem(tnoe *raiz);
 int main(void);
-
-void imprimir_pre_ordem(tnoe *raiz) {
-    if (raiz != NULL) {
-        printf("%d ", raiz->chave);
-        imprimir_pre_ordem(raiz->esq);
-        imprimir_pre_ordem(raiz->dir);
-    }
-}
 
 int main(void){
     tnoe *raiz;
@@ -26,9 +18,28 @@ int main(void){
     inserir(&raiz, 18);
     inserir(&raiz, 14);
 
-    imprimir_pre_ordem(raiz);
+    percorrer_pre(raiz);
 
     remover(raiz, &raiz, 12);
     printf("\n");
-    imprimir_pre_ordem(raiz);
+    percorrer_pre(raiz);
+    printf("\n");
+
+    printf("Quantidade de folhas: %d \n", contar_folhas(raiz));
+
+    int chave_teste = 13;
+    printf("Quantidade de chaves maiores que %d : %d \n", chave_teste, contar_maiores_chave(raiz, chave_teste));
+
+    printf("Percusos da arvore: Pré-ordem, Em-ordem, Pós-Ordem \n");
+    percorrer_pre(raiz);
+    printf("\n");
+    percorrer_in(raiz);
+    printf("\n");
+    percorrer_pos(raiz);
+    printf("\n");
+
+    chave_teste = 14;
+    printf("A altura da chave %d : %d \n", chave_teste, altura_no(raiz, chave_teste));
+
+    printf("A quantidade de nós com apenas um filho é: %d \n", contar_nos_um_filho(raiz));
 }

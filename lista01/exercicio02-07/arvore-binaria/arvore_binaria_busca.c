@@ -102,3 +102,7 @@ int remover(tnoe *raiz, tnoe **no_atual, tno chave){
 
     return 1;
 }
+
+void print_chave(tno chave){
+    printf("%d", chave);
+}

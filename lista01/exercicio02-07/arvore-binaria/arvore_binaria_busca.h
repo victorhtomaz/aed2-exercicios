@@ -13,4 +13,5 @@ tnoe* cria_no(tno chave);
 int arvore_vazia(tnoe *arv);
 int inserir(tnoe **arv, tno valor);
 int remover(tnoe *raiz, tnoe **no, tno chave);
+void print_chave(tno no);
 #endif
