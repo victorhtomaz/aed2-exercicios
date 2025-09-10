@@ -91,12 +91,14 @@ int remover(tnoe *raiz, tnoe **no_atual, tno chave){
                 sucessor = sucessor->esq;
             }
 
-            aux->chave = sucessor->chave;
+            sucessor->esq = aux->esq;
 
-            if (ant_sucessor == aux)
-                ant_sucessor->dir = sucessor->dir;
-            else
+            if (ant_sucessor != aux){
                 ant_sucessor->esq = sucessor->dir;
+                sucessor->dir = aux->dir;
+            }
+
+            *no_atual = sucessor;
         }
     }
 
